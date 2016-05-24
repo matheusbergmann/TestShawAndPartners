@@ -1,0 +1,55 @@
+<html ng-app="testShawAndPartners">
+<head>
+  <title>Test Shaw and Partners</title>
+  <link rel="stylesheet" type="text/css" href="lib/bootstrap/bootstrap.css">
+  <style>
+    .jumbotron {
+      width: 400px;
+      text-align: center;
+      margin-top: 20px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .table {
+      margin-top: 20px;
+    }
+    .form-control {
+      margin-bottom: 5px;
+    }
+  </style>
+  <script src="lib/angular.js"></script>
+  <script>
+    angular.module("testShawAndPartners", []);
+    angular.module("testShawAndPartners").controller("testShawAndPartnersCtrl", function ($scope) {
+      $scope.app = "Palindrome";
+      $scope.result = "";
+      $scope.validatePalindrome = function (word) {
+      
+      /* remove special characters, spaces and make lowercase*/
+      var removeChar = word.replace(/[^A-Z0-9]/ig, "").toLowerCase();
+
+      /* reverse removeChar for comparison*/
+      var checkPalindrome = removeChar.split('').reverse().join('');
+
+      /* Check to see if word is a Palindrome*/
+      if(removeChar === checkPalindrome){
+        
+        $scope.result = " is a Palindrome ";
+      }else{
+        
+        $scope.result = " is not a Palindrome ";
+      }
+            
+          }});
+  </script>
+</head> 
+<body ng-controller="testShawAndPartnersCtrl">
+  <div class="jumbotron">
+    <h3>{{app}}</h3>
+    <hr/>
+    <input class="form-control" type="text" ng-model="word" placeholder="Word"/>
+    <button class="btn" ng-click="validatePalindrome(word)">Validate Palidrome</button>
+    <h3>{{result}}</h3>
+  </div>
+</body>
+</html>
